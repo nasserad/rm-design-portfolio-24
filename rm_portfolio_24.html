@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <p id="nasser">hi</p>
+    <script>
+        let isEnglish = true;
+        let isDark = true;
+
+        const languageSliderGreenId = "67c1a2ed351358e64e652241";
+        const colorModeSliderGreenId = "67c1a3d78345838698953ddd";
+
+        const elementClassName = "pack";
+        const englishDarkId = "pack_699fd8c6-0961-4563-9a90-012e5a002c5e";
+        const arabicDarkId = "pack_69c6536c-6283-4c43-abdb-9881c4d9c8ac";
+        const englishLightId = "pack_4931404d-0f48-4053-9de4-8a09f7501b70";
+        const arabicLightId = "pack_8d5b5882-9063-44d9-8276-dafe96b3bd0e";
+
+        function updateWidget() {
+            if(isEnglish && isDark) {
+                //to show
+                $(`div.${elementClassName}[data-id="${englishDarkId}"]`).show();
+
+                //to hide
+                $(`div.${elementClassName}[data-id="${arabicDarkId}"]`).hide();
+                $(`div.${elementClassName}[data-id="${englishLightId}"]`).hide();
+                $(`div.${elementClassName}[data-id="${arabicLightId}"]`).hide();
+
+            } else if (!isEnglish && isDark) {
+                $(`div.${elementClassName}[data-id="${arabicDarkId}"]`).show();
+
+                //to hide
+                $(`div.${elementClassName}[data-id="${englishDarkId}"]`).hide();
+                $(`div.${elementClassName}[data-id="${englishLightId}"]`).hide();
+                $(`div.${elementClassName}[data-id="${arabicLightId}"]`).hide();
+
+            } else if (isEnglish && !isDark) {
+                $(`div.${elementClassName}[data-id="${englishLightId}"]`).show();
+
+                //to hide
+                $(`div.${elementClassName}[data-id="${englishDarkId}"]`).hide();
+                $(`div.${elementClassName}[data-id="${arabicDarkId}"]`).hide();
+                $(`div.${elementClassName}[data-id="${arabicLightId}"]`).hide();
+
+            } else if (!isEnglish && !isDark) {
+                $(`div.${elementClassName}[data-id="${arabicLightId}"]`).show();
+
+                //to hide
+                $(`div.${elementClassName}[data-id="${englishDarkId}"]`).hide();
+                $(`div.${elementClassName}[data-id="${arabicDarkId}"]`).hide();
+                $(`div.${elementClassName}[data-id="${englishLightId}"]`).hide();
+            }
+        }
+
+        function setIsEnglish() {
+            isEnglish = !isEnglish;
+            updateWidget(); // Update display every time the state changes.
+        }
+        function setIsDark() {
+            isDark = !isDark;
+            updateWidget(); // Update display every time the state changes.
+        }
+
+        // Attach the click event handler.
+        //language
+        $(`div.common-button[data-id="${languageSliderGreenId}"]`).click(setIsEnglish);
+        //color mode
+        $(`div.common-button[data-id="${colorModeSliderGreenId}"]`).click(setIsDark);
+
+        // Initial call to set the widget state correctly on page load.
+        updateWidget();
+    </script>
+</body>
+</html></meta></html>
